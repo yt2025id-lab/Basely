@@ -1,0 +1,26 @@
+PLACEHOLDER: demo-video.mp4
+
+This is a placeholder file indicating where your demo video should be placed.
+
+Instructions:
+1. Record a demo video showcasing Basely's features
+2. Name it: demo-video.mp4
+3. Place it in this /docs folder
+4. Delete this placeholder file
+
+Demo should include:
+- Landing page with neon effects
+- Auto demo button functionality
+- Wallet balance tracking
+- Token swap simulation
+- Yield farming interface
+- Telegram chat simulation
+- Live activity feed
+
+Recommended specs:
+- Format: MP4 (H.264 codec)
+- Resolution: 1920x1080 (Full HD)
+- Duration: 1-2 minutes
+- Max file size: 50MB (compress if needed)
+
+For Base Batches 002 Hackathon Submission

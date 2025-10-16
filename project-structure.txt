@@ -1,0 +1,86 @@
+BASELY - Hackathon Folder Structure
+====================================
+
+basely/
+├── app/                          # Next.js 14 Frontend (App Router)
+│   ├── dashboard/
+│   │   └── page.tsx             # Interactive dashboard with neon UI
+│   ├── api/
+│   │   └── basely/
+│   │       └── route.ts         # API route handler
+│   ├── page.tsx                 # Landing page
+│   ├── layout.tsx               # Root layout
+│   └── globals.css              # Global styles + neon utilities
+│
+├── bot/                         # Telegram Bot Backend (existing)
+│   └── [Your bot files]        # (Untouched - add your structure)
+│
+├── contracts/                   # Smart Contracts (Base blockchain)
+│   └── [Solidity files]        # (To be added)
+│
+├── docs/                        # Documentation & Media
+│   ├── screenshots/             # UI screenshots for submission
+│   ├── README.md                # Documentation guide
+│   └── PLACEHOLDER_demo-video.txt  # Replace with demo-video.mp4
+│
+├── components/                  # React components (empty - ready for use)
+├── hooks/                       # Custom React hooks (empty)
+├── lib/                         # Third-party integrations (empty)
+├── types/                       # TypeScript type definitions (empty)
+├── utils/                       # Utility functions (empty)
+│
+├── public/                      # Static assets
+│
+├── .env.example                 # Environment variables template
+├── .gitignore                   # Git ignore rules (comprehensive)
+├── README.md                    # Main project README (hackathon ready)
+├── package.json                 # Dependencies
+├── tsconfig.json                # TypeScript config
+├── tailwind.config.ts           # TailwindCSS config
+├── next.config.js               # Next.js config
+│
+└── [Documentation files]
+    ├── START_HERE.md
+    ├── COMMANDS_SUMMARY.md
+    ├── CSS_NEON_UTILITIES.md
+    ├── INTERACTIVE_UPGRADE.md
+    ├── NEON_DASHBOARD.md
+    ├── QUICK_START.md
+    └── SETUP.md
+
+Key Files Created for Hackathon:
+================================
+✓ /contracts                     - Empty folder for smart contracts
+✓ /docs                          - Documentation folder
+✓ /docs/screenshots              - Screenshots folder
+✓ /docs/README.md                - Documentation guide
+✓ /docs/PLACEHOLDER_demo-video.txt - Video placeholder
+✓ .env.example                   - Comprehensive env template
+✓ .gitignore                     - Enhanced gitignore with security rules
+✓ README.md                      - Updated for Base Batches 002
+
+Next Steps:
+===========
+1. Add Telegram bot code to /bot folder
+2. Develop and deploy smart contracts to /contracts
+3. Take screenshots and add to /docs/screenshots
+4. Record demo video and replace placeholder
+5. Fill in team info in README.md
+6. Update contract addresses in .env.example
+
+Commands to Run:
+================
+# Install dependencies
+npm install
+
+# Run frontend dev server
+npm run dev
+
+# Run Telegram bot (in separate terminal)
+cd bot
+node index.js
+
+# Build for production
+npm run build
+
+Your existing /app and /bot folders remain untouched!

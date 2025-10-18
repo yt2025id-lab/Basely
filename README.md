@@ -1,266 +1,421 @@
-# BASELY 🤖
+# BASELY
 
-> **"Complexity was the bug. Conversation is the fix."**
+> AI-Powered DeFi Telegram Assistant on Base Blockchain
 
-[![Base Batches 002](https://img.shields.io/badge/Base-Batches%20002-0052FF?style=for-the-badge&logo=ethereum)](https://base.org)
-[![Live Demo](https://img.shields.io/badge/Demo-Try%20It%20Now-blueviolet?style=for-the-badge)](http://localhost:3000/dashboard)
+[![Base](https://img.shields.io/badge/Base-Sepolia-0052FF?style=for-the-badge&logo=ethereum)](https://base.org)
 [![MIT License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 
 ---
 
-## 🚨 The Problem
+## What is Basely?
 
-You've heard DeFi will revolutionize finance. You want in. You open Uniswap, Aave, Compound... and immediately feel like you're reading alien documentation. What's "impermanent loss"? Why do I need to "approve" before I swap? What's a good APY? Which pool is safe?
+**Basely** is an AI-powered DeFi assistant that simplifies blockchain interactions through natural language commands on Telegram. Built on Base blockchain, it makes DeFi accessible to everyone—no technical knowledge required.
 
-**Here's the hard truth**: DeFi has 400M+ potential users. Only 5% actually participate. Why? Because the UX is *terrible*. You need to juggle 6 different dApps, understand gas optimization, compare yields across protocols, avoid scams, and pray you don't fat-finger a transaction and send $10K to the void.
+### Key Features
 
-**We built Basely to fix this.**
-
----
-
-## 💡 What is Basely?
-
-**Basely is your AI-powered DeFi assistant that lives in Telegram.** No confusing dApps. No learning curve. Just chat like you're texting a friend who happens to be a DeFi expert.
-
-Ask in plain English → Get actionable answers → Execute on Base blockchain.
+- **Natural Language DeFi**: Stake, swap, and farm yields using plain English
+- **AI-Powered**: Intelligent command parsing understands your intent
+- **Telegram Native**: Chat interface everyone already knows
+- **Base Blockchain**: Fast, low-cost transactions on Coinbase's L2
+- **Open Source**: MIT licensed, built for the community
 
 ---
 
-## 🎯 How It Works (The Magic)
+## Quick Start
 
-Here's a real conversation flow:
+### Prerequisites
 
-```
-You: "What's the best way to farm yield on stablecoins?"
+- Node.js 18+ and npm
+- Telegram account
+- Base Sepolia testnet ETH ([Get from faucet](https://www.coinbase.com/faucets/base-ethereum-goerli-faucet))
 
-Basely: "I found 2 solid options on Base:
-        • SOL Pool: 12.3% APY (higher risk, trending 🔥)
-        • USDC Pool: 7.1% APY (stable, low risk)
+### Installation
 
-        SOL Pool has $24.8M TVL and has been stable for 90 days.
-        Want me to stake your USDC there?"
-
-You: "Yeah, stake 100 USDC in the USDC Pool"
-
-Basely: "✅ Staked 100 USDC → USDC Pool (7.1% APY)
-        Tx: 0xabc123... | Gas: $0.03
-        You're earning ~$7.10/year. I'll notify you if APY drops."
-```
-
-**That's it.** No bridging headaches. No gas fee surprises. Just conversation → action.
-
----
-
-## 🌟 Features (Built Different)
-
-### 🤖 **AI-Powered Brain**
-Uses Claude API to understand DeFi intent. You say "show me stable yields," Basely knows you mean stablecoin farming, compares protocols, and explains trade-offs in plain English.
-
-### 💬 **Telegram Native**
-No new app to download. 1.5 billion people already use Telegram. Basely meets you where you are.
-
-### 📊 **Live Dashboard**
-Beautiful dark-themed dashboard shows:
-- **Wallet Overview**: Real-time balances (SOL, USDC, portfolio value)
-- **Swap Simulator**: Test swaps before executing (see slippage, fees)
-- **Yield Farming Explorer**: Compare APYs across protocols
-- **Recent Activity**: Track every transaction with live updates
-
-### 🔄 **Swap Simulator**
-Want to swap 1.5 SOL → USDC? Basely shows you the exact output (30.45 USDC), gas fees ($0.03), and slippage (0.5%) *before* you commit. No more "oops, I just paid $50 in gas."
-
-### 🌾 **Yield Farming Explorer**
-See all available pools, compare APYs, check TVL, and stake in one message. Basely highlights trending pools and warns you about risky ones.
-
-### ⚡ **Instant Execution**
-Execute swaps and stakes in seconds. Basely handles approvals, gas optimization, and transaction monitoring. You just say "yes."
-
----
-
-## 📸 Screenshots
-
-### **Landing Page**
-![Landing Page with neon animations](./docs/screenshots/landing.png)
-*Neon-themed landing page with gradient buttons and animated features*
-
-### **Interactive Dashboard**
-![Interactive dashboard with wallet, swap, and yield farming](./docs/screenshots/dashboard.png)
-*Live dashboard showing wallet overview, swap simulator, yield farming, and activity feed*
-
-### **Telegram Chat Interface**
-![Conversational AI in action](./docs/screenshots/telegram-chat.png)
-*Natural conversation flow with Basely Bot executing DeFi operations*
-
----
-
-## 🛠️ Tech Stack (How We Built This)
-
-### **Frontend**
-- **Next.js 14** (App Router) — Blazing fast, SEO-ready dashboard
-- **TypeScript** — Type safety for production-grade code
-- **TailwindCSS** — Custom neon utilities (purple-pink-cyan gradients 🌈)
-- **React Hooks** — State management for live updates
-
-### **AI Layer**
-- **Claude API** — Natural language understanding at scale
-- Trained to interpret DeFi jargon, parse user intent, and validate transactions
-
-### **Bot**
-- **Telegram Bot API** — Native chat interface (1.5B users)
-- **Node.js** — Event-driven architecture for real-time responses
-
-### **Blockchain**
-- **Base (L2)** — Low gas fees, fast finality, EVM-compatible
-- **Solidity** — Smart contracts for swaps, staking, yield farms
-- **ethers.js** — On-chain interactions (swap, approve, stake)
-
-### **Deployment**
-- **Vercel** — Frontend hosting (edge functions for speed)
-- **Render** — Bot backend (always online)
-- **Base Sepolia → Mainnet** — Testnet proof → production rollout
-
----
-
-## 🚀 Getting Started (Try It Now)
-
-### **1. Clone the Repo**
 ```bash
-git clone https://github.com/OjanOnChain/basely.git
+# Clone the repository
+git clone https://github.com/yourusername/basely.git
 cd basely
-```
 
-### **2. Install Dependencies**
-```bash
+# Install dependencies
 npm install
-```
 
-### **3. Setup Environment**
-```bash
+# Copy environment variables
 cp .env.example .env
-# Add your API keys (Claude, Telegram, Base RPC)
 ```
 
-### **4. Run the Dashboard**
+### Configuration
+
+Edit `.env` with your credentials:
+
+```env
+# Telegram Bot Token (get from @BotFather)
+TELEGRAM_BOT_TOKEN=your_bot_token_here
+
+# Base Sepolia RPC
+BASE_RPC_URL=https://sepolia.base.org
+
+# Your wallet private key (testnet only!)
+PRIVATE_KEY=0xYOUR_PRIVATE_KEY
+
+# Deployed staking pool address
+STAKING_POOL_ADDRESS=0xYOUR_CONTRACT_ADDRESS
+```
+
+### Running the Project
+
+#### Option 1: Run Telegram Bot Locally
+
+```bash
+npm run bot
+```
+
+Your bot will start polling for messages. Open Telegram and chat with your bot!
+
+#### Option 2: Run Next.js App (with Webhook)
+
 ```bash
 npm run dev
-# Open http://localhost:3000/dashboard
 ```
 
-### **5. Try the Telegram Bot**
+Open [http://localhost:3000](http://localhost:3000) to see the landing page.
+
+---
+
+## Project Structure
+
+```
+basely/
+├── app/                      # Next.js 14 app directory
+│   ├── api/
+│   │   └── webhook/
+│   │       └── route.ts      # Telegram webhook endpoint
+│   ├── page.tsx              # Landing page
+│   ├── layout.tsx            # Root layout
+│   └── globals.css           # Global styles
+├── src/
+│   ├── bot/
+│   │   ├── index.ts          # Bot entry point
+│   │   └── handlers.ts       # Command handlers
+│   └── ai/
+│       └── commandParser.ts  # NLP command parser
+├── lib/
+│   ├── blockchain.ts         # Blockchain utilities (viem)
+│   ├── stakingPool.ts        # Staking contract interactions
+│   ├── config.ts             # Environment configuration
+│   └── types.ts              # TypeScript types
+├── contracts/
+│   ├── StakingPool.sol       # Solidity staking contract
+│   └── README.md             # Contract deployment guide
+├── .env.example              # Environment template
+├── package.json
+└── README.md
+```
+
+---
+
+## Smart Contract Deployment
+
+### Deploy StakingPool Contract
+
+1. **Using Remix IDE** (Recommended for beginners):
+   - Go to [Remix IDE](https://remix.ethereum.org/)
+   - Copy `contracts/StakingPool.sol`
+   - Compile with Solidity 0.8.20+
+   - Switch to Base Sepolia in MetaMask
+   - Deploy and copy the contract address
+
+2. **Using Hardhat**:
+   ```bash
+   npm install --save-dev hardhat
+   npx hardhat init
+   # Configure hardhat.config.ts for Base Sepolia
+   npx hardhat run scripts/deploy.ts --network baseSepolia
+   ```
+
+3. **Using Foundry**:
+   ```bash
+   forge create --rpc-url $BASE_RPC_URL \
+     --private-key $PRIVATE_KEY \
+     contracts/StakingPool.sol:StakingPool
+   ```
+
+4. **Fund the Pool**:
+   ```bash
+   # Send ETH to contract for rewards
+   cast send $STAKING_POOL_ADDRESS \
+     --value 1ether \
+     --rpc-url $BASE_RPC_URL \
+     --private-key $PRIVATE_KEY
+   ```
+
+Full deployment guide: [contracts/README.md](contracts/README.md)
+
+---
+
+## Usage Examples
+
+### Telegram Bot Commands
+
+```
+/start              - Welcome message and introduction
+/help               - Show all available commands
+/balance            - Check your ETH balance
+/stake <amount>     - Stake ETH (e.g., /stake 0.1)
+/unstake            - Unstake all ETH and claim rewards
+/rewards            - Check staking info and pending rewards
+/swap               - Swap tokens (coming soon)
+```
+
+### Natural Language Examples
+
+```
+You: "I want to stake 0.5 ETH"
+Bot: ⏳ Staking 0.5 ETH...
+     ✅ Successfully staked! Tx: 0xabc...
+
+You: "How much ETH do I have?"
+Bot: 💰 Your Balance
+     ETH: 2.4567 ETH
+     Address: 0x1234...
+
+You: "Show my staking info"
+Bot: 📊 Your Staking Info
+     💰 Staked: 0.5 ETH
+     🎁 Pending Rewards: 0.0012 ETH
+     📅 Staked Since: 12/15/2024
+```
+
+---
+
+## Architecture
+
+### Tech Stack
+
+- **Frontend**: Next.js 14, TypeScript, TailwindCSS
+- **Bot**: Telegraf.js (Telegram Bot API)
+- **AI**: Rule-based NLP parser (extensible to Claude/OpenAI)
+- **Blockchain**: viem (Ethereum library), Base Sepolia L2
+- **Smart Contracts**: Solidity 0.8.20, StakingPool
+- **Deployment**: Vercel (frontend), Node.js (bot)
+
+### How It Works
+
+1. **User sends message** via Telegram
+2. **AI Parser** extracts intent (stake, swap, balance, etc.)
+3. **Handler** executes blockchain action using viem
+4. **Smart Contract** processes transaction on Base
+5. **Bot replies** with confirmation and transaction hash
+
+### Webhook vs Polling
+
+- **Development**: Bot runs with polling (`npm run bot`)
+- **Production**: Vercel handles webhook (`app/api/webhook/route.ts`)
+
+To set webhook for production:
 ```bash
-cd bot
-node index.js
-# Search @BaselyCryptoBot on Telegram (Coming soon)
-```
-
-### **6. Start Chatting!**
-```
-/start → "Show me my portfolio"
-        → "Swap 1 SOL to USDC"
-        → "What's the best yield farm?"
+curl -X POST https://api.telegram.org/bot<YOUR_BOT_TOKEN>/setWebhook \
+  -d url=https://your-app.vercel.app/api/webhook
 ```
 
 ---
 
-## 🔗 On-Chain Details (Proof of Work)
+## Deployment
 
-### **Base Sepolia (Testnet)**
-- **Contract Address**: *Will be deployed to Base Sepolia (Day 3)*
-- **Example Swap**: Coming soon after deployment
+### Deploy to Vercel
 
-### **Base Mainnet (Coming Soon)**
-- **Contract Address**: *Phase 2 - Q1 2026*
-- **Gas Sponsorship**: Paymaster integration for gasless swaps
+```bash
+# Install Vercel CLI
+npm i -g vercel
 
-### **Supported Tokens**
-- WETH: `0x4200000000000000000000000000000000000006`
-- USDC: `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
+# Deploy
+vercel
 
----
+# Set environment variables in Vercel dashboard
+# Settings → Environment Variables → Add:
+# - TELEGRAM_BOT_TOKEN
+# - BASE_RPC_URL
+# - PRIVATE_KEY
+# - STAKING_POOL_ADDRESS
+```
 
-## 🗺️ Roadmap (Honest, Not Overhyped)
+### Set Telegram Webhook
 
-### ✅ **Phase 1: MVP (NOW - Hackathon)**
-- [x] Interactive dashboard with auto-demo
-- [x] Telegram bot with conversational AI
-- [x] Swap simulator and yield farming UI
-- [x] Base testnet integration (contracts deploying)
+After deploying to Vercel:
 
-### 🔄 **Phase 2: Production (Q1 2026)**
-- [ ] Deploy smart contracts to Base mainnet
-- [ ] Gas sponsorship via paymasters (gasless txs for users)
-- [ ] Multi-chain support (Optimism, Arbitrum)
-- [ ] Portfolio tracking with alerts (APY drops, price swings)
-
-### 🚀 **Phase 3: Scale (Q2 2026)**
-- [ ] Mobile app (React Native)
-- [ ] Social trading (copy whale strategies)
-- [ ] Community governance (token-based voting)
-- [ ] Advanced strategies (auto-compounding, yield optimization)
+```bash
+curl -X POST https://api.telegram.org/bot<YOUR_BOT_TOKEN>/setWebhook \
+  -d url=https://your-app.vercel.app/api/webhook
+```
 
 ---
 
-## 🌐 Why Base?
+## Development Roadmap
 
-**Base is the perfect chain for retail DeFi.** Low gas fees (<$0.10), fast finality (2-3s), and EVM compatibility make it ideal for casual users. Basely makes Base accessible to *everyone*—not just crypto natives.
+### Phase 1: MVP (Current)
+- [x] Telegram bot integration
+- [x] Natural language command parsing
+- [x] ETH staking on Base Sepolia
+- [x] Balance checking
+- [x] Staking pool smart contract
+- [x] Next.js landing page
 
-Our vision: **Make Base the go-to chain for the next 100M DeFi users.**
+### Phase 2: Enhanced Features
+- [ ] Token swapping (Uniswap integration)
+- [ ] Yield farming pools
+- [ ] Multi-token support (USDC, DAI, etc.)
+- [ ] Transaction history
+- [ ] Price alerts and notifications
+
+### Phase 3: AI Integration
+- [ ] Anthropic Claude API integration
+- [ ] Advanced intent recognition
+- [ ] Multi-step DeFi strategies
+- [ ] Portfolio optimization suggestions
+
+### Phase 4: Production
+- [ ] Deploy to Base Mainnet
+- [ ] Security audit
+- [ ] Gas optimization
+- [ ] Multi-chain support
 
 ---
 
-## 🎥 Demo Video
+## Testing
 
-[![Basely Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+### Test on Base Sepolia
 
-*Watch the full walkthrough: [YouTube Link](docs/demo-video.mp4)*
+1. Get testnet ETH from [Base Faucet](https://www.coinbase.com/faucets/base-ethereum-goerli-faucet)
+2. Deploy StakingPool contract
+3. Fund the pool with test ETH
+4. Start the bot: `npm run bot`
+5. Chat with your bot on Telegram:
+   - Try: "Stake 0.01 ETH"
+   - Try: "Check my balance"
+   - Try: "Show my rewards"
+
+### Verify on BaseScan
+
+All transactions are visible on [Base Sepolia Explorer](https://sepolia.basescan.org/)
 
 ---
 
-## 🤝 Contributing
+## Security Notes
 
-We're open to contributors! If you want to add features, fix bugs, or improve docs:
+**IMPORTANT**:
+- This is a **DEMO** project for educational purposes
+- DO NOT use with mainnet funds without professional audit
+- Always use a dedicated testnet wallet
+- Never commit private keys to version control
+- The `.gitignore` already excludes `.env` files
 
-1. Fork the repo
-2. Create a branch (`git checkout -b feature/awesome-feature`)
-3. Commit changes (`git commit -m 'Add awesome feature'`)
-4. Push to branch (`git push origin feature/awesome-feature`)
+**Known Limitations**:
+- Bot uses a single wallet (not multi-user)
+- No transaction signing confirmation
+- Limited error handling for edge cases
+- Smart contract not audited
+
+For production use:
+- Implement user wallet management
+- Add transaction approval flows
+- Conduct security audit
+- Implement rate limiting
+- Add comprehensive error handling
+
+---
+
+## Contributing
+
+Contributions welcome! Please:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
----
+### Development Guidelines
 
-## 📄 License
-
-MIT License — feel free to fork, remix, and build on Basely!
-
----
-
-## 🏆 Hackathon Submission
-
-**Base Batches 002**
-
-**Built by**: Achmad Fauzan Ashari
-**Contact**: [@Ojan_OnChain](https://twitter.com/Ojan_OnChain) | [Telegram](https://t.me/Ojan_OnChain)
-
-**Tech**: Base + Next.js + Claude AI + Telegram
-**Category**: DeFi Accessibility & UX Innovation
+- Use TypeScript for type safety
+- Follow existing code style
+- Add error handling and logging
+- Update README for new features
+- Test on Base Sepolia before submitting
 
 ---
 
-## 💬 What's Next?
+## Troubleshooting
 
-🔗 **Try the live demo**: [localhost:3000/dashboard](http://localhost:3000/dashboard) *(run locally for now)*
-💬 **Chat with Basely**: [@BaselyCryptoBot](https://t.me/BaselyCryptoBot) *(coming soon)*
-⭐ **Star this repo** if you believe DeFi should be simple
-🐦 **Follow the builder**: [@Ojan_OnChain](https://twitter.com/Ojan_OnChain)
+### Bot Not Responding
+
+```bash
+# Check bot token
+curl https://api.telegram.org/bot<YOUR_TOKEN>/getMe
+
+# Restart bot
+npm run bot
+```
+
+### Transaction Failing
+
+- Check wallet has enough ETH for gas
+- Verify RPC URL is correct
+- Ensure contract is deployed and funded
+- Check Base Sepolia network status
+
+### Webhook Issues
+
+```bash
+# Check webhook status
+curl https://api.telegram.org/bot<YOUR_TOKEN>/getWebhookInfo
+
+# Delete webhook (for local development)
+curl https://api.telegram.org/bot<YOUR_TOKEN>/deleteWebhook
+```
+
+---
+
+## Resources
+
+- [Base Documentation](https://docs.base.org/)
+- [Telegram Bot API](https://core.telegram.org/bots/api)
+- [viem Documentation](https://viem.sh/)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Solidity Documentation](https://docs.soliditylang.org/)
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Acknowledgments
+
+- Built with [Base](https://base.org) - Coinbase's L2 blockchain
+- Powered by [Telegram](https://telegram.org) - Messaging platform
+- AI parsing inspired by [Claude](https://anthropic.com) and [OpenAI](https://openai.com)
+- UI styled with [TailwindCSS](https://tailwindcss.com)
+
+---
+
+## Contact
+
+**Project Maintainer**: Your Name
+**Email**: your.email@example.com
+**Twitter**: [@YourHandle](https://twitter.com/YourHandle)
+**Telegram**: [@YourTelegram](https://t.me/YourTelegram)
 
 ---
 
 <div align="center">
 
-**Built with ❤️ during Base Batches 002**
+**Built with ❤️ for the Base ecosystem**
 
 *Making DeFi conversational, one chat at a time.*
 
-🤖 **Basely** — Your AI-powered DeFi buddy
+[Try Basely](#quick-start) | [Report Bug](https://github.com/yourusername/basely/issues) | [Request Feature](https://github.com/yourusername/basely/issues)
 
 </div>

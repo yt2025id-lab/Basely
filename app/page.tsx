@@ -1,139 +1,112 @@
-"use client";
-
-import Link from "next/link";
-import { useState } from "react";
+/**
+ * Landing page for Basely
+ */
 
 export default function Home() {
-  const [showAlert, setShowAlert] = useState(false);
-
-  const handleTelegramDemo = () => {
-    setShowAlert(true);
-    setTimeout(() => setShowAlert(false), 3000);
-  };
-
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center p-8 overflow-hidden bg-navy">
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-navy via-purple/10 to-navy"></div>
-
-      {/* Alert notification */}
-      {showAlert && (
-        <div className="fixed top-8 right-8 z-50 bg-gradient-to-r from-purple to-pink px-6 py-4 rounded-lg box-glow-purple animate-pulse fade-in">
-          <p className="text-white font-semibold">🤖 Telegram Bot Demo Coming Soon!</p>
+    <main className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
+      <div className="container mx-auto px-4 py-16">
+        {/* Hero Section */}
+        <div className="text-center mb-16">
+          <h1 className="text-6xl font-bold text-white mb-4">
+            Basely
+          </h1>
+          <p className="text-2xl text-purple-200 mb-8">
+            AI-Powered DeFi Assistant on Base
+          </p>
+          <p className="text-lg text-purple-300 max-w-2xl mx-auto">
+            Simplify DeFi operations with natural language commands through Telegram.
+            Stake, swap, and farm yields effortlessly on Base blockchain.
+          </p>
         </div>
-      )}
 
-      {/* Hero content */}
-      <div className="relative z-10 w-full max-w-6xl fade-in">
+        {/* Features */}
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="bg-white/10 backdrop-blur-lg rounded-lg p-6 border border-white/20">
+            <div className="text-4xl mb-4">💰</div>
+            <h3 className="text-xl font-bold text-white mb-2">Easy Staking</h3>
+            <p className="text-purple-200">
+              Stake ETH and earn rewards with simple commands like "Stake 0.1 ETH"
+            </p>
+          </div>
+
+          <div className="bg-white/10 backdrop-blur-lg rounded-lg p-6 border border-white/20">
+            <div className="text-4xl mb-4">🤖</div>
+            <h3 className="text-xl font-bold text-white mb-2">AI-Powered</h3>
+            <p className="text-purple-200">
+              Natural language processing understands your DeFi intents automatically
+            </p>
+          </div>
+
+          <div className="bg-white/10 backdrop-blur-lg rounded-lg p-6 border border-white/20">
+            <div className="text-4xl mb-4">⚡</div>
+            <h3 className="text-xl font-bold text-white mb-2">Base Network</h3>
+            <p className="text-purple-200">
+              Fast, low-cost transactions on Coinbase's L2 blockchain
+            </p>
+          </div>
+        </div>
+
+        {/* How It Works */}
+        <div className="bg-white/10 backdrop-blur-lg rounded-lg p-8 border border-white/20 mb-16">
+          <h2 className="text-3xl font-bold text-white mb-6 text-center">
+            How It Works
+          </h2>
+          <div className="grid md:grid-cols-4 gap-6">
+            <div className="text-center">
+              <div className="bg-purple-500 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 text-white font-bold">
+                1
+              </div>
+              <p className="text-purple-200">Start a chat with Basely bot on Telegram</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-purple-500 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 text-white font-bold">
+                2
+              </div>
+              <p className="text-purple-200">Tell it what you want to do in plain English</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-purple-500 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 text-white font-bold">
+                3
+              </div>
+              <p className="text-purple-200">AI understands and executes your DeFi action</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-purple-500 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 text-white font-bold">
+                4
+              </div>
+              <p className="text-purple-200">Get instant confirmation and results</p>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA */}
         <div className="text-center">
-          {/* Main title with whale logo and breathing neon glow */}
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <h1 className="text-7xl md:text-9xl font-bold bg-gradient-to-r from-purple via-pink to-cyan bg-clip-text text-transparent neon-pulse">
-              BASELY
-            </h1>
-            {/* Rotating and floating whale */}
-            <div className="text-7xl md:text-9xl rotate float">
-              🐋
-            </div>
-          </div>
-
-          {/* Subtitle with slide-in animation and soft glow */}
-          <p className="text-2xl md:text-3xl text-cyan-300 neon-glow-cyan text-center mb-4">
-            Your AI-powered DeFi Telegram Buddy 🚀
+          <a
+            href="https://t.me/YOUR_BOT_USERNAME"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors"
+          >
+            Start Using Basely on Telegram
+          </a>
+          <p className="text-purple-300 mt-4">
+            Available on Base Sepolia Testnet
           </p>
-
-          <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto text-center fade-in">
-            Experience the future of decentralized finance with intelligent AI assistance,
-            seamless Telegram integration, and Web3 superpowers
-          </p>
-
-          {/* CTA Buttons with enhanced hover effects */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20">
-            <Link
-              href="/dashboard"
-              className="group relative px-10 py-5 bg-gradient-to-r from-purple to-pink hover:from-purple/90 hover:to-pink/90 text-white text-lg font-bold rounded-xl transition-all transform hover:scale-105 box-glow-purple ring-pulse-hover overflow-hidden"
-            >
-              <span className="flex items-center justify-center gap-2">
-                <span className="wiggle-hover inline-block">🚀</span>
-                Launch Dashboard
-              </span>
-            </Link>
-
-            <button
-              onClick={handleTelegramDemo}
-              className="group relative px-10 py-5 bg-navy/80 border-2 border-cyan hover:bg-cyan/10 hover:border-cyan/80 text-white text-lg font-bold rounded-xl transition-all transform hover:scale-105 ring-pulse-hover"
-            >
-              <span className="flex items-center justify-center gap-2">
-                <span className="wiggle-hover inline-block">📱</span>
-                Try Telegram Demo
-              </span>
-            </button>
-          </div>
-
-          {/* Feature highlights with enhanced animations */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-            {/* AI-Powered */}
-            <div className="group p-8 bg-gradient-to-br from-purple/20 to-transparent border border-purple/30 rounded-2xl hover:border-purple hover:box-glow-purple transition-all duration-300 tilt-hover">
-              <div className="text-6xl mb-4 transform group-hover:scale-110 transition-transform float">
-                🤖
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-3 neon-glow-purple">
-                AI-Powered
-              </h3>
-              <p className="text-gray-400">
-                Advanced AI understands your DeFi needs and executes complex operations with simple commands
-              </p>
-            </div>
-
-            {/* Telegram Native */}
-            <div className="group p-8 bg-gradient-to-br from-pink/20 to-transparent border border-pink/30 rounded-2xl hover:border-pink hover:box-glow-pink transition-all duration-300 tilt-hover">
-              <div className="text-6xl mb-4 transform group-hover:scale-110 transition-transform float" style={{ animationDelay: "1s" }}>
-                💬
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-3 neon-glow-pink">
-                Telegram Native
-              </h3>
-              <p className="text-gray-400">
-                Interact with DeFi protocols seamlessly through your favorite messaging app
-              </p>
-            </div>
-
-            {/* Web3 Ready */}
-            <div className="group p-8 bg-gradient-to-br from-cyan/20 to-transparent border border-cyan/30 rounded-2xl hover:border-cyan hover:box-glow-cyan transition-all duration-300 tilt-hover">
-              <div className="text-6xl mb-4 transform group-hover:scale-110 transition-transform float" style={{ animationDelay: "2s" }}>
-                ⚡
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-3 neon-glow-cyan">
-                Web3 Ready
-              </h3>
-              <p className="text-gray-400">
-                Built for the decentralized future with full blockchain integration and smart contract support
-              </p>
-            </div>
-          </div>
-
-          {/* Stats banner with pulsing animations */}
-          <div className="mt-16 p-6 bg-gradient-to-r from-purple/10 via-pink/10 to-cyan/10 border border-purple/20 rounded-xl border-glow-animate">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="fade-in" style={{ animationDelay: "0.1s" }}>
-                <p className="text-3xl font-bold text-purple neon-glow-purple">24/7</p>
-                <p className="text-sm text-gray-400 mt-1">AI Assistance</p>
-              </div>
-              <div className="fade-in" style={{ animationDelay: "0.2s" }}>
-                <p className="text-3xl font-bold text-pink neon-glow-pink">10+</p>
-                <p className="text-sm text-gray-400 mt-1">DeFi Protocols</p>
-              </div>
-              <div className="fade-in" style={{ animationDelay: "0.3s" }}>
-                <p className="text-3xl font-bold text-cyan neon-glow-cyan">Instant</p>
-                <p className="text-sm text-gray-400 mt-1">Transactions</p>
-              </div>
-              <div className="fade-in" style={{ animationDelay: "0.4s" }}>
-                <p className="text-3xl font-bold text-white">100%</p>
-                <p className="text-sm text-gray-400 mt-1">Decentralized</p>
-              </div>
-            </div>
-          </div>
         </div>
+
+        {/* Footer */}
+        <footer className="mt-16 text-center text-purple-300">
+          <p className="mb-2">Open Source | MIT License</p>
+          <a
+            href="https://github.com/yourusername/basely"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-purple-400 hover:text-purple-300 transition-colors"
+          >
+            View on GitHub
+          </a>
+        </footer>
       </div>
     </main>
   );

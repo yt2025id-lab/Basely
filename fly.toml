@@ -1,0 +1,25 @@
+# Fly.io Configuration for Basely Bot
+app = "basely-bot"
+primary_region = "sin"
+
+[build]
+  [build.args]
+    NODE_VERSION = "20"
+
+[env]
+  NODE_ENV = "production"
+
+[[services]]
+  internal_port = 8080
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+[processes]
+  app = "npm start"

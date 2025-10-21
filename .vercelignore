@@ -1,0 +1,67 @@
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# EXCLUDE ALL NEXT.JS FILES - API ONLY!
+app/
+pages/
+public/
+styles/
+components/
+next.config.js
+next.config.mjs
+next-env.d.ts
+.next/
+
+# Development files
+src/
+lib/
+scripts/
+test/
+tests/
+
+# Contract files
+contracts/
+out/
+cache/
+broadcast/
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Build artifacts
+dist/
+build/
+coverage/
+
+# Dependencies (Vercel will install from api/package.json)
+node_modules/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# ROOT package.json - don't use it!
+package.json
+package-lock.json
+tsconfig.json
+tailwind.config.ts
+postcss.config.mjs

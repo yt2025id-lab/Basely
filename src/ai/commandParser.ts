@@ -3,7 +3,7 @@
  * Parses user messages and extracts DeFi action intents
  */
 
-import type { CommandIntent } from '../../lib/types';
+import type { CommandIntent } from '@/lib/types';
 
 /**
  * Parse natural language command into structured intent

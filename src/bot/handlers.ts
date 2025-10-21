@@ -5,10 +5,11 @@
 
 import { Context } from 'telegraf';
 import { parseCommand, generateSuggestion } from '../ai/commandParser';
-import { getETHBalance } from '../../lib/blockchain';
-import { stakeETH, unstakeETH, getStakeInfo, formatStakeInfo } from '../../lib/stakingPool';
-import { config } from '../../lib/config';
-import { SUPPORTED_COMMANDS } from '../../lib/types';
+import { getETHBalance } from '@/lib/blockchain';
+import { stakeETH, unstakeETH, getStakeInfo, formatStakeInfo, claimRewards } from '@/lib/stakingPool';
+import { getMockETHBalance, claimMockETHFaucet } from '@/lib/mockETH';
+import { config } from '@/lib/config';
+import { SUPPORTED_COMMANDS } from '@/lib/types';
 
 /**
  * Handle /start command
@@ -19,15 +20,18 @@ export async function handleStart(ctx: Context) {
 Your AI-powered DeFi assistant on Base blockchain.
 
 I can help you:
-💰 Stake ETH to earn rewards
+💰 Stake ETH to earn mockETH rewards
+🪙 Claim free mockETH from faucet
 📊 Check your balance and staking info
+🎁 Claim your rewards anytime
 🔄 Swap tokens (coming soon)
-🌾 Farm yields (coming soon)
 
-Try saying:
-- "Stake 0.1 ETH"
-- "Check my balance"
-- "Show my staking info"
+Try these commands:
+/stake <amount> - Stake ETH (e.g., /stake 0.01)
+/mystake - View your staking info
+/claim - Claim mockETH rewards
+/mocketh - Get 10 free mockETH
+/balance - Check ETH & mockETH balance
 
 Or type /help for all commands.
 
@@ -68,12 +72,15 @@ export async function handleBalance(ctx: Context) {
   try {
     await ctx.reply('🔍 Checking your balance...');
 
-    const balance = await getETHBalance(config.blockchain.walletAddress);
+    const ethBalance = await getETHBalance(config.blockchain.walletAddress);
+    const mockETHBalance = await getMockETHBalance(config.blockchain.walletAddress);
 
     const message = `💰 Your Balance\n\n` +
-      `ETH: ${parseFloat(balance).toFixed(4)} ETH\n` +
-      `Address: ${config.blockchain.walletAddress}\n\n` +
-      `Network: Base Sepolia Testnet`;
+      `💎 ETH: ${parseFloat(ethBalance).toFixed(4)} ETH\n` +
+      `🪙 mockETH: ${parseFloat(mockETHBalance).toFixed(4)} mockETH\n\n` +
+      `📍 Address: ${config.blockchain.walletAddress}\n` +
+      `🌐 Network: Base Sepolia Testnet\n\n` +
+      `💡 Staking rewards are paid in mockETH tokens!`;
 
     await ctx.reply(message);
   } catch (error: any) {
@@ -225,6 +232,76 @@ export async function handleMessage(ctx: Context) {
   } catch (error: any) {
     console.error('Error handling message:', error);
     await ctx.reply(`❌ Something went wrong: ${error.message}`);
+  }
+}
+
+/**
+ * Handle /mystake command - View staking info with mockETH balance
+ */
+export async function handleMyStake(ctx: Context) {
+  try {
+    await ctx.reply('🔍 Checking your staking info...');
+
+    const stakeInfo = await getStakeInfo(config.blockchain.walletAddress);
+    const mockETHBalance = await getMockETHBalance(config.blockchain.walletAddress);
+
+    let message = formatStakeInfo(stakeInfo);
+    message += `\n\n💎 Your MockETH Balance: ${parseFloat(mockETHBalance).toFixed(6)} mockETH`;
+    message += `\n\n🔗 StakingPool: https://sepolia.basescan.org/address/${config.contracts.stakingPool}`;
+
+    await ctx.reply(message);
+  } catch (error: any) {
+    console.error('Error getting stake info:', error);
+    await ctx.reply(`❌ Error checking stake info: ${error.message}`);
+  }
+}
+
+/**
+ * Handle /claim command - Claim mockETH rewards without unstaking
+ */
+export async function handleClaim(ctx: Context) {
+  try {
+    await ctx.reply('⏳ Claiming your mockETH rewards...');
+
+    const result = await claimRewards();
+
+    if (result.success) {
+      const mockETHBalance = await getMockETHBalance(config.blockchain.walletAddress);
+      await ctx.reply(
+        result.message +
+        `\n\n💎 New MockETH Balance: ${parseFloat(mockETHBalance).toFixed(6)} mockETH`
+      );
+    } else {
+      await ctx.reply(`❌ ${result.message}`);
+    }
+  } catch (error: any) {
+    console.error('Error claiming rewards:', error);
+    await ctx.reply(`❌ Error claiming rewards: ${error.message}`);
+  }
+}
+
+/**
+ * Handle /mocketh command - Claim free mockETH from faucet
+ */
+export async function handleMockETHFaucet(ctx: Context) {
+  try {
+    await ctx.reply('⏳ Claiming 10 mockETH from faucet...\n\n💡 This may take a few seconds...');
+
+    const result = await claimMockETHFaucet();
+
+    if (result.success) {
+      const mockETHBalance = await getMockETHBalance(config.blockchain.walletAddress);
+      await ctx.reply(
+        result.message +
+        `\n\n💎 New MockETH Balance: ${parseFloat(mockETHBalance).toFixed(6)} mockETH\n\n` +
+        `💡 You can claim from faucet unlimited times for testing!`
+      );
+    } else {
+      await ctx.reply(`❌ ${result.message}`);
+    }
+  } catch (error: any) {
+    console.error('Error claiming mockETH:', error);
+    await ctx.reply(`❌ Error claiming mockETH: ${error.message}`);
   }
 }
 

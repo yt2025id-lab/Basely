@@ -1,0 +1,12 @@
+{
+  "name": "basely-bot-api",
+  "version": "1.0.0",
+  "description": "Basely Telegram Bot Webhook Handler",
+  "main": "bot.js",
+  "dependencies": {
+    "telegraf": "^4.16.3"
+  },
+  "engines": {
+    "node": ">=18.x"
+  }
+}

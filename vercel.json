@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "functions": {
+    "api/bot.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  },
+  "builds": [
+    {
+      "src": "api/bot.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/bot",
+      "dest": "/api/bot.js"
+    }
+  ],
+  "buildCommand": "",
+  "devCommand": "",
+  "installCommand": "cd api && npm install"
+}

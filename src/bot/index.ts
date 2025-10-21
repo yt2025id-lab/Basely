@@ -4,7 +4,6 @@
  */
 
 import { Telegraf } from 'telegraf';
-import dotenv from 'dotenv';
 import {
   handleStart,
   handleHelp,
@@ -13,13 +12,13 @@ import {
   handleUnstake,
   handleRewards,
   handleSwap,
+  handleMyStake,
+  handleClaim,
+  handleMockETHFaucet,
   handleMessage,
   handleError,
 } from './handlers';
-import { config, validateConfig } from '../../lib/config';
-
-// Load environment variables
-dotenv.config();
+import { config, validateConfig } from '@/lib/config';
 
 /**
  * Initialize and start the Telegram bot
@@ -41,8 +40,11 @@ async function startBot() {
   bot.command('help', handleHelp);
   bot.command('balance', handleBalance);
   bot.command('stake', handleStake);
+  bot.command('mystake', handleMyStake);
+  bot.command('claim', handleClaim);
   bot.command('unstake', handleUnstake);
   bot.command('rewards', handleRewards);
+  bot.command('mocketh', handleMockETHFaucet);
   bot.command('swap', handleSwap);
 
   // Handle all text messages with natural language processing

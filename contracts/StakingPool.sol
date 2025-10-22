@@ -1,11 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
 /**
  * @title StakingPool
  * @dev Simple staking pool contract for Basely DeFi Assistant
  * @notice This is a basic implementation for demonstration purposes
- * Users can stake ETH and earn rewards over time
+ * Users can stake ETH and earn rewards in MockETH tokens
  */
 contract StakingPool {
     // Staking information for each user
@@ -25,6 +27,9 @@ contract StakingPool {
     address public owner;
     bool public paused;
 
+    // MockETH token address for rewards
+    address public mockETH;
+
     // Events
     event Staked(address indexed user, uint256 amount, uint256 timestamp);
     event Unstaked(address indexed user, uint256 amount, uint256 reward);
@@ -43,9 +48,11 @@ contract StakingPool {
         _;
     }
 
-    constructor() {
+    constructor(address _mockETH) {
+        require(_mockETH != address(0), "Invalid MockETH address");
         owner = msg.sender;
         paused = false;
+        mockETH = _mockETH;
     }
 
     /**
@@ -73,7 +80,7 @@ contract StakingPool {
     }
 
     /**
-     * @dev Unstake all ETH and claim rewards
+     * @dev Unstake all ETH and claim rewards in MockETH
      */
     function unstake() external whenNotPaused {
         Stake storage userStake = stakes[msg.sender];
@@ -88,12 +95,14 @@ contract StakingPool {
         userStake.rewardDebt = 0;
         totalStaked -= amount;
 
-        // Transfer staked amount + rewards
-        uint256 totalAmount = amount + reward;
-        require(address(this).balance >= totalAmount, "Insufficient contract balance");
+        // Transfer staked ETH back to user
+        (bool success, ) = msg.sender.call{value: amount}("");
+        require(success, "ETH transfer failed");
 
-        (bool success, ) = msg.sender.call{value: totalAmount}("");
-        require(success, "Transfer failed");
+        // Transfer MockETH rewards to user (if any)
+        if (reward > 0) {
+            require(IERC20(mockETH).transfer(msg.sender, reward), "Reward transfer failed");
+        }
 
         emit Unstaked(msg.sender, amount, reward);
     }
@@ -112,10 +121,8 @@ contract StakingPool {
         userStake.rewardDebt = 0;
         userStake.timestamp = block.timestamp;
 
-        require(address(this).balance >= reward, "Insufficient contract balance");
-
-        (bool success, ) = msg.sender.call{value: reward}("");
-        require(success, "Transfer failed");
+        // Transfer MockETH rewards to user
+        require(IERC20(mockETH).transfer(msg.sender, reward), "Transfer failed");
 
         emit RewardClaimed(msg.sender, reward);
     }
@@ -176,30 +183,38 @@ contract StakingPool {
     }
 
     /**
-     * @dev Emergency withdraw (only owner) - withdraws all contract balance
+     * @dev Emergency withdraw ETH (only owner) - withdraws all staked ETH
      */
-    function emergencyWithdrawOwner() external onlyOwner {
+    function emergencyWithdrawETH() external onlyOwner {
         uint256 balance = address(this).balance;
         (bool success, ) = owner.call{value: balance}("");
         require(success, "Transfer failed");
     }
 
     /**
-     * @dev Fund the contract with ETH for rewards
+     * @dev Emergency withdraw MockETH rewards (only owner)
      */
-    function fundRewards() external payable {
-        require(msg.value > 0, "Must send ETH");
+    function emergencyWithdrawMockETH() external onlyOwner {
+        uint256 balance = IERC20(mockETH).balanceOf(address(this));
+        require(IERC20(mockETH).transfer(owner, balance), "Transfer failed");
     }
 
     /**
-     * @dev Get contract balance
+     * @dev Get contract MockETH balance (for rewards)
      */
-    function getContractBalance() external view returns (uint256) {
+    function getRewardBalance() external view returns (uint256) {
+        return IERC20(mockETH).balanceOf(address(this));
+    }
+
+    /**
+     * @dev Get contract ETH balance (for staked amount)
+     */
+    function getStakedBalance() external view returns (uint256) {
         return address(this).balance;
     }
 
     /**
-     * @dev Fallback function to receive ETH
+     * @dev Fallback function to receive ETH for staking
      */
     receive() external payable {}
 }

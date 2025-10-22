@@ -82,7 +82,7 @@ hardhat.config.ts.backup
 
 # Foundry
 /foundry/
-lib/
+/contracts/lib/
 
 # ===========================================
 # Operating System Files

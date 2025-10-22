@@ -183,6 +183,13 @@ temp/
 *-old.*
 *-backup.*
 
+# Ignore internal documentation (local only)
+docs/internal/
+SUBMISSION_*.md
+TESTING_*.md
+TIMELINE_*.md
+DEPLOY_NOW.md
+
 # Keep demo video placeholder but ignore large video files during dev
 # docs/demo-video.mp4 (uncomment if video is too large)
 

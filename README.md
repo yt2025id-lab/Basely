@@ -230,7 +230,7 @@ curl -X POST https://api.telegram.org/bot<YOUR_BOT_TOKEN>/setWebhook \
 
 **Bot is deployed and running 24/7 on Railway!**
 
-Want to deploy your own instance? See [RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md) for step-by-step guide.
+Want to deploy your own instance? See [RAILWAY_DEPLOYMENT.md](docs/RAILWAY_DEPLOYMENT.md) for step-by-step guide.
 
 **Quick Deploy:**
 1. Fork this repo
@@ -249,7 +249,7 @@ STAKING_POOL_ADDRESS=0x814D00372212f2dfd98340e010fd74a485619fc2
 MOCK_ETH_ADDRESS=0xaa742F895CE3387935DfEa7eCA8414a2426FB183
 ```
 
-Full guide: [RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md)
+Full guide: [RAILWAY_DEPLOYMENT.md](docs/RAILWAY_DEPLOYMENT.md)
 
 ---
 

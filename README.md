@@ -420,6 +420,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 *Making DeFi conversational, one chat at a time.*
 
-[Try Basely](#quick-start) | [Report Bug](https://github.com/yourusername/basely/issues) | [Request Feature](https://github.com/yourusername/basely/issues)
+---
+
+**This project is intentionally designed to be expanded beyond the hackathon with full intent to ship to production on Base Mainnet in early 2026.**
+
+We're committed to building the future of accessible DeFi on Base.
+
+---
+
+[Try Basely](#quick-start) | [Report Bug](https://github.com/yt2025id-lab/Basely/issues) | [Request Feature](https://github.com/yt2025id-lab/Basely/issues)
 
 </div>

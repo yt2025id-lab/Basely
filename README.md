@@ -4,14 +4,33 @@
 
 [![Base](https://img.shields.io/badge/Base-Sepolia-0052FF?style=for-the-badge&logo=ethereum)](https://base.org)
 [![MIT License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
-[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Bot Status](https://img.shields.io/badge/Bot-LIVE%20%E2%9C%85-brightgreen?style=for-the-badge&logo=telegram)](https://t.me/BaselyCryptoBot)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+
+---
+
+## 🤖 Try It NOW!
+
+**Bot is LIVE on Telegram:** [@BaselyCryptoBot](https://t.me/BaselyCryptoBot)
+
+```
+Try these commands:
+/start    - Get started with Basely
+/balance  - Check your ETH & mockETH balance
+/mocketh  - Claim 10 free mockETH tokens
+/stake    - Stake ETH to earn rewards
+/mystake  - View your staking info
+```
+
+**🎯 Built for Base Batches 002 Hackathon**
 
 ---
 
 ## What is Basely?
 
 **Basely** is an AI-powered DeFi assistant that simplifies blockchain interactions through natural language commands on Telegram. Built on Base blockchain, it makes DeFi accessible to everyone—no technical knowledge required.
+
+**🚀 Status:** Deployed and running 24/7 on Railway
 
 ### Key Features
 
@@ -115,42 +134,26 @@ basely/
 
 ---
 
-## Smart Contract Deployment
+## Smart Contracts (Base Sepolia)
 
-### Deploy StakingPool Contract
+### Deployed Contracts ✅
 
-1. **Using Remix IDE** (Recommended for beginners):
-   - Go to [Remix IDE](https://remix.ethereum.org/)
-   - Copy `contracts/StakingPool.sol`
-   - Compile with Solidity 0.8.20+
-   - Switch to Base Sepolia in MetaMask
-   - Deploy and copy the contract address
+**StakingPool Contract:**
+- **Address:** `0x814D00372212f2dfd98340e010fd74a485619fc2`
+- **BaseScan:** [View Contract](https://sepolia.basescan.org/address/0x814D00372212f2dfd98340e010fd74a485619fc2)
+- **Features:** ETH staking, time-based rewards, mockETH distribution
 
-2. **Using Hardhat**:
-   ```bash
-   npm install --save-dev hardhat
-   npx hardhat init
-   # Configure hardhat.config.ts for Base Sepolia
-   npx hardhat run scripts/deploy.ts --network baseSepolia
-   ```
+**MockETH Token Contract:**
+- **Address:** `0xaa742F895CE3387935DfEa7eCA8414a2426FB183`
+- **BaseScan:** [View Contract](https://sepolia.basescan.org/address/0xaa742F895CE3387935DfEa7eCA8414a2426FB183)
+- **Features:** ERC-20 token, faucet (10 tokens per claim), staking rewards
 
-3. **Using Foundry**:
-   ```bash
-   forge create --rpc-url $BASE_RPC_URL \
-     --private-key $PRIVATE_KEY \
-     contracts/StakingPool.sol:StakingPool
-   ```
+### Deploy Your Own (Optional)
 
-4. **Fund the Pool**:
-   ```bash
-   # Send ETH to contract for rewards
-   cast send $STAKING_POOL_ADDRESS \
-     --value 1ether \
-     --rpc-url $BASE_RPC_URL \
-     --private-key $PRIVATE_KEY
-   ```
-
-Full deployment guide: [contracts/README.md](contracts/README.md)
+Want to deploy your own contracts? See [contracts/README.md](contracts/README.md) for:
+- Foundry deployment scripts
+- Contract configuration
+- Testing instructions
 
 ---
 
@@ -223,43 +226,44 @@ curl -X POST https://api.telegram.org/bot<YOUR_BOT_TOKEN>/setWebhook \
 
 ## Deployment
 
-### Deploy to Vercel
+### Current Deployment: Railway ✅
 
-```bash
-# Install Vercel CLI
-npm i -g vercel
+**Bot is deployed and running 24/7 on Railway!**
 
-# Deploy
-vercel
+Want to deploy your own instance? See [RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md) for step-by-step guide.
 
-# Set environment variables in Vercel dashboard
-# Settings → Environment Variables → Add:
-# - TELEGRAM_BOT_TOKEN
-# - BASE_RPC_URL
-# - PRIVATE_KEY
-# - STAKING_POOL_ADDRESS
+**Quick Deploy:**
+1. Fork this repo
+2. Sign up at [Railway](https://railway.app)
+3. Connect GitHub repo
+4. Set environment variables
+5. Deploy!
+
+**Environment Variables Needed:**
+```env
+TELEGRAM_BOT_TOKEN=<your_bot_token>
+WALLET_ADDRESS=<your_wallet>
+PRIVATE_KEY=<your_private_key>
+RPC_URL=https://sepolia.base.org
+STAKING_POOL_ADDRESS=0x814D00372212f2dfd98340e010fd74a485619fc2
+MOCK_ETH_ADDRESS=0xaa742F895CE3387935DfEa7eCA8414a2426FB183
 ```
 
-### Set Telegram Webhook
-
-After deploying to Vercel:
-
-```bash
-curl -X POST https://api.telegram.org/bot<YOUR_BOT_TOKEN>/setWebhook \
-  -d url=https://your-app.vercel.app/api/webhook
-```
+Full guide: [RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md)
 
 ---
 
 ## Development Roadmap
 
-### Phase 1: MVP (Current)
+### Phase 1: MVP ✅ (COMPLETED)
 - [x] Telegram bot integration
 - [x] Natural language command parsing
 - [x] ETH staking on Base Sepolia
 - [x] Balance checking
 - [x] Staking pool smart contract
-- [x] Next.js landing page
+- [x] Railway deployment (24/7 uptime)
+- [x] MockETH reward system
+- [x] Live on Telegram: [@BaselyCryptoBot](https://t.me/BaselyCryptoBot)
 
 ### Phase 2: Enhanced Features
 - [ ] Token swapping (Uniswap integration)
